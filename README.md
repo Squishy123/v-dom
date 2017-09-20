@@ -1,2 +1,2 @@
 # silk
-tThe stuff that holds the web together
+The stuff that holds the web together
