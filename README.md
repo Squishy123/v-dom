@@ -1,2 +1,2 @@
 # silk
-The stuff that holds the web together
+A Virtual DOM
