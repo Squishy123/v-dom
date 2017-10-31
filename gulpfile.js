@@ -12,7 +12,7 @@ var rename = require('gulp-rename');
 gulp.task('lint', function() {
   return gulp.src('src/js/*.js')
     .pipe(jshint())
-    .pipe(jshint().reporter('default'));
+    .pipe(jshint.reporter('default'));
 });
 
 // Compile Sass into css
