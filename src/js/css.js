@@ -1,11 +1,21 @@
 //Figure our what selector is
 function checkSelector(element, selector) {
   let selected = {
-    "class-list": [],
-    "id-list": []
+    "classList": [],
+    "id": []
   };
-    selected["class-list"] = selector.match(/\.\w+/g);
-    selected["id-list"] = selector.match(/\#\w+/g);
+
+  //Eventually remove this with regex
+  selected["classList"] = selector.match(/\.\w+/g);
+  for (let i = 0; i < selected["classList"].length; i++) {
+    selected["classList"][i] = selected["classList"][i].replace(".", "");
+  }
+
+  selected["id"] = selector.match(/\#\w+/g);
+    for (let i = 0; i < selected["id"].length; i++) {
+      selected["id"][i] = selected["id"][i].replace("#", "");
+    }
+
   return selected;
 }
 
