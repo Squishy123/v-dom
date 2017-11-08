@@ -1,4 +1,4 @@
-class SilkElement {
+class Thread {
   constructor(tagName, options, children) {
     this.tagName = tagName;
     this.options = options;
@@ -10,7 +10,7 @@ class SilkElement {
   convertToHTML() {
     let html = "";
     if (this.tagName)
-      html += "<" + this.tagName + ">";
+      html += `<${this.tagName}>`;
     if (Array.isArray(this.children)) {
       this.children.forEach(function(child) {
         html += child.convertToHTML();
@@ -19,9 +19,9 @@ class SilkElement {
       html += this.children;
     }
     if (this.tagName)
-      html += "</" + this.tagName + ">";
+      html += `</${this.tagName}>`;
 
-      return html;
+    return html;
   }
 
   appendChild(childElement) {
@@ -81,18 +81,19 @@ class SilkElement {
   }
 }
 
-
-class Silk {
+class Weaver {
   constructor() {
     this.VOM = [];
   }
 
-  createElement(tagName, options) {
-    let createdElement = new SilkElement(tagName, options);
+  createElement(tagName, options, children) {
+    let createdElement = new Thread(tagName, options, children);
     this.VOM.push(createdElement);
     return createdElement;
   }
 }
 
-let doc = new SilkElement("html", {}, [new SilkElement("head", {}, [new SilkElement("title", {}, "Hey Jude!")]), new SilkElement("body", {})]);
-console.log(doc.convertToHTML());
+module.exports = {
+  Weaver: Weaver,
+  Thread: Thread
+};
